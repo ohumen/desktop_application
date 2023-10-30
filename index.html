@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Desktop App</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body onload="initClock()">
+    <main class="main-page">
+        <!-- HEADER -->
+        <header class="header" id="page-header">
+            <div class="header-body">
+                <p class="site-title">Desktop Corner</p>
+                <div class="date-time">
+                    <div class="date">
+                        <span id="day-name">Day</span>,
+                        <span id="month">Month</span>
+                        <span id="day-number">00</span>,
+                        <span id="year">Year</span>
+                    </div>
+                    <div class="time">
+                        <span id="hour">00</span>:
+                        <span id="minutes">00</span>
+                        <span id="period">AM</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- APPS ICONS -->
+        <section class="apps" id="apps">
+            <div class="apps-body">
+                <div class="notes-icon">
+                    <img class="apps-icon" src="./assets/notes.png" alt="">
+                    <p class="app-title">Notes</p>
+                </div>
+                <div class="folder-icon">
+                    <img class="apps-icon" src="./assets/folder.png" alt="">
+                    <p class="app-title">Stuff</p>
+                </div>
+                <div class="snake-icon">
+                    <img class="apps-icon" src="./assets/snake.png" alt="">
+                    <p class="app-title">Snake</p>
+                </div>
+                <div class="music-icon">
+                    <img class="apps-icon" src="./assets/radio.png" alt="">
+                    <p class="app-title">AC FM</p>
+                </div>
+                <div class="calculator-icon">
+                    <img class="apps-icon" src="./assets/calculator.png" alt="">
+                    <p class="app-title">Calc</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNAKE GAME -->
+        <section class="snake-game-section" id="snake-game">
+            <div class="snake-game-draggable-item draggable-item">
+                <div class="snake-game-bar">
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <h2 class="snake-game-title">Snake Game</h2>
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="snake-game-body">
+                <div class="play-board"></div>
+                <div class="game-details">
+                    <span class="score">Score: 0</span>
+                    <span class="high-score">High Score: 0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERROR -->
+        <section class="error-section" id="error">
+            <div class="error-draggable-item draggable-item">
+                <h2 class="error-title">Error</h2>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="error-body">
+                <img class="error-icon" src="./assets/warning.png" alt="">
+                <button class="error-btn" type="submit">Ok</button>
+            </div>
+        </section>
+
+        <!-- POP UP -->
+        <section class="pop-up-section" id="pop-up">
+            <div class="pop-up-draggable-item draggable-item">
+                <div class="pop-up-bar">
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <h2 class="pop-up-title">Cat's Message</h2>
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="pop-up-body">
+                <h2 class="pop-up-text">Do You Like Cats?</h2>
+                <img class="pop-up-img" src="./assets/pop-up-img.png" alt="">
+                <div class="pop-up-buttons">
+                    <button class="pop-up-btn" type="submit">Yes</button>
+                    <button class="pop-up-btn" type="submit">Yes</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TO DO -->
+        <section class="to-do-section" id="to-do">
+            <div class="to-do-draggable-item draggable-item">
+                <div class="to-do-bar">
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <h2 class="to-do-title">To-Do</h2>
+                    <div class="bars">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="to-do-body">
+                <div class="to-do-lists">
+                    <div class="input-group">
+                        <div class="checkbox-row">
+                            <input type="checkbox" class="check" name="check" id="check">
+                            <label for="check">Put On Pants;</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" name="check" id="check">
+                            <label for="check">Drink A Glass Of Water;</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" name="check" id="check">
+                            <label for="check">Check Email.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALCULATOR -->
+        <section class="calculator-section" id="calculator">
+            <div class="calculator-draggable-item draggable-item">
+                <h2 class="calculator-title">Calculator</h2>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="calculator-body">
+                <div class="calculator">
+                    <form>
+                        <div class="calculator-display">
+                            <input type="text" name="display" readonly>
+                        </div>
+                        <div class="calculator-row">
+                            <input type="button" value="C" onclick="display.value = ''">
+                            <input type="button" value="E" onclick="display.value = display.value.toString().slice(0,-1)">
+                            <input type="button" value="=" onclick="display.value = eval(display.value)">
+                            <input type="button" value="*" onclick="display.value += '*'">
+                        </div>
+                        <div class="calculator-row">
+                            <input type="button" value="7" onclick="display.value += '7'">
+                            <input type="button" value="8" onclick="display.value += '8'">
+                            <input type="button" value="9" onclick="display.value += '9'">
+                            <input type="button" value="/" onclick="display.value += '/'">
+                        </div>
+                        <div class="calculator-row">
+                            <input type="button" value="4" onclick="display.value += '4'">
+                            <input type="button" value="5" onclick="display.value += '5'">
+                            <input type="button" value="6" onclick="display.value += '6'">
+                            <input type="button" value="-" onclick="display.value += '-'">
+                        </div>
+                        <div class="calculator-row bottom">
+                            <div class="calculator-left-row">
+                                <div class="calculator top">
+                                    <input type="button" value="1" onclick="display.value += '1'">
+                                    <input type="button" value="2" onclick="display.value += '2'">
+                                    <input type="button" value="3" onclick="display.value += '3'">
+                                </div>
+                                <div class="calculator bottom">
+                                    <input class="calculator-double-width" type="button" value="0" onclick="display.value += '0'">
+                                    <input type="button" value="." onclick="display.value += '.'">
+                                </div>
+                            </div>
+                            <div class="calculator-right-row">
+                                <input class="calculator-double-height" type="button" value="+" onclick="display.value += '+'">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </section>
+
+        <!-- MUSIC PLAYER -->
+        <section class="music-player-section" id="music-player">
+            <div class="music-player-draggable-item draggable-item">
+                <h2 class="music-player-title">I Promise To Dance If You Play</h2>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="music-player-body">
+                <div class="controls">
+                    <div class="song-change">
+                        <div class="button-border">
+                            <div class="song-button"><img class="btn previous" src="./assets/previous.png"></div>
+                        </div>
+                        <div class="button-border">
+                            <div class="song-button">
+                                <img class="btn play-pause" src="./assets/play-button.png" id="play-pause-button">
+                            </div>
+                        </div>
+                        <div class="button-border">
+                            <div class="song-button"><img class="btn next" src="./assets/next-button.png"></div>
+                        </div>
+                    </div>
+                    <div class="volume-change">
+                        <div class="volume-border">
+                            <img class="volume-icon" src="./assets/speaker.png">
+                            <div class="volume-slider outer">
+                                <div class="volume-slider inner">
+                                    <div class="slider-knob">
+                                        <div class="slider-knob-inner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-border">
+                        <div class="now-playing">
+                            <h2 class="playing"><span class="song-name"></span></h2>
+                            <div class="time-display">
+                              <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOLDER -->
+        <section class="folder-section" id="folder">
+            <div class="folder-head">
+                <div class="folder-head-left">
+                    <h2 class="folder-name">stuff.raw</h2>
+                </div>
+                <div class="folder-head-right"></div>
+            </div>
+            <div class="folder-draggable-item draggable-item">
+                <img class="star-icon" src="./assets/star.png" alt="">
+                <div class="folder-title"></div>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <div class="folder-content-left"></div>
+                    <div class="folder-content-right">
+                        <div class="pool-photo">
+                            <img class="photo-icon" src="./assets/image.png" alt="">
+                            <p class="photo-title">pool.jpg</p>
+                        </div>
+                        <div class="plant-photo">
+                            <img class="photo-icon" src="./assets/image.png" alt="">
+                            <p class="photo-title">plant.jpg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMG 001 -->
+        <section class="img1-section" id="img1">
+            <div class="img1-draggable-item draggable-item">
+                <h2 class="img1-title">Img_001</h2>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="img1-body">
+                <img class="img1-image" src="./assets/img-001.jpg" alt="">
+            </div>
+        </section>
+
+        <!-- IMG 002 -->
+        <section class="img2-section" id="img2">
+            <div class="img2-draggable-item draggable-item">
+                <h2 class="img2-title">Img_002</h2>
+                <div class="close-button">
+                    <img class="close-icon" src="./assets/close.png" alt="">
+                </div>
+            </div>
+            <div class="img2-body">
+                <img class="img2-image" src="./assets/img-002.jpg" alt="">
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
